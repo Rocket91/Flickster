@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorblackprimary"
+    >
+
+    <ImageView
+        android:id="@+id/ivPoster"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_launcher_background"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        tools:text="Toy Story 4"
+        android:textColor="@color/colorRedlight"
+        android:layout_margin="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tvOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rbRating"
+        android:textColor="@color/colorRedlight"
+        tools:text="Woody has always been confident about his place in the world and that his priority is taking care of his kid, whether that's Andy or Bonnie. But when Bonnie adds a reluctant new toy called &quot;Forky&quot; to her room, a road trip adventure alongside old and new friends will show Woody how big the world can be for a toy.&quot;, release_date: &quot;2019-06-19"
+        android:layout_margin="10dp"/>
+
+    <RatingBar
+        android:id="@+id/rbRating"
+        style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ivPoster"
+        android:layout_marginLeft="25dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:progressBackgroundTint="@color/colorGrey"
+
+        android:progressTint="@color/colorRatingBar" />
+
+    <TextView
+        android:id="@+id/tvReleaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:layout_toRightOf="@id/rbRating"
+        android:layout_marginBottom="-10dp"
+        android:layout_toEndOf="@+id/rbRating"
+        android:text="TextView"
+        android:textColor="@color/colorRedlight"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvOverview"
+        android:layout_marginTop="-25dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/colorGrey"
+        android:layout_marginVertical="2dp"
+        android:layout_marginHorizontal="20dp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/rbRating"
+        android:layout_alignTop="@id/rbRating"
+        android:text="Release date: "
+        android:textColor="@color/colorWhite"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp"
+        />
+</RelativeLayout>
