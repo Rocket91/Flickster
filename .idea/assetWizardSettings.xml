@@ -34,7 +34,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\Users\Founedie\Documents\memes\icon_launcher.png" />
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="foregroundImage" value="C:\Users\Founedie\Documents\memes\icon.jpg" />
                                     </map>
                                   </option>
                                 </PersistentState>

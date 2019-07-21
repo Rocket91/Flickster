@@ -1,6 +1,7 @@
 package ht.applicatech.flickster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -8,12 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
+import ht.applicatech.flickster.DetailActivity;
+import ht.applicatech.flickster.GlideApp;
 import ht.applicatech.flickster.R;
 import ht.applicatech.flickster.models.Movie;
 
@@ -41,7 +47,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         Movie movie = movies.get(position);
         // bind the movie data into the view holder
         holder.bind(movie);
-        }
+
+    }
 
     @Override
     public int getItemCount() {
@@ -54,6 +61,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         TextView tvOverview;
         ImageView ivPoster;
         TextView tvReleaseDate;
+        RelativeLayout container;
+        int radius = 30;
+        int margin = 10;
+
 
 
 
@@ -62,15 +73,36 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
-            tvReleaseDate = itemView.findViewById(R.id.tvReleaseDate);
+            tvReleaseDate = itemView.findViewById(R.id.tvReleaseDate2);
+            container = itemView.findViewById(R.id.container);
+
 
         }
 
-        public void bind(Movie movie) {
+        public void bind(final Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
-            Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
+
+            GlideApp.with(context).load(movie.getPosterPath())
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                    .override(400, 500)
+                    .transform(new RoundedCorners(radius))
+                    .into(ivPoster);
+
             tvReleaseDate.setText(movie.getReleaseDate());
+            // add click listener to the whole row
+
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //navigate to details activity on tap
+                    Intent i = new Intent(context, DetailActivity.class);
+                    i.putExtra("movie", Parcels.wrap(movie));
+                    context.startActivity(i);
+                }
+            });
+
 
         }
     }
